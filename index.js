@@ -19,6 +19,30 @@ module.exports = function () {
       return m('.btn-group', actionsView.apply(null, arguments));
     };
 
+    // list filters
+    app.components.listFilters.theme.applyButtonClass = '.btn.btn-primary';
+    app.components.listFilters.theme.fieldsClass = '.columns';
+    app.components.listFilters.theme.fieldClass = '.form.one-fourth.column';
+    app.components.listFilters.theme.fieldTag = 'dl';
+    var filterLabelView = app.components.fields.filterLabel.view;
+    app.components.fields.filterLabel.view = function () {
+      return m('dt', filterLabelView.apply(null, arguments));
+    };
+    var filterInputView = app.components.listFilters.views.fieldInput;
+    app.components.listFilters.views.fieldInput = function () {
+      return m('dd', filterInputView.apply(null, arguments));
+    };
+
+    app.components.listFilters.theme.sortTag = 'dl';
+    var sortLabelView = app.components.listFilters.views.sortLabel;
+    app.components.listFilters.views.sortLabel = function () {
+      return m('dt', sortLabelView.apply(null, arguments));
+    };
+    var sortInputsView = app.components.listFilters.views.sortInputs;
+    app.components.listFilters.views.sortInputs = function () {
+      return m('dd', sortInputsView.apply(null, arguments));
+    };
+
     // show resource
     app.components.show.theme.backButtonClass = '.btn';
     app.components.show.theme.listButtonClass = '.btn';
